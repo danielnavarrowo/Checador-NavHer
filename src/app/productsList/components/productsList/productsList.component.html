@@ -1,0 +1,42 @@
+<div class="h-screen box-border p-4 flex flex-col">
+	<div class="flex flex-col gap-4 text-purple-950 pb-4">
+		<h1 class="text-center text-pretty text-4xl font-semibold">Lista de productos</h1>
+		<p class="text-center text-pretty text-xs font-normal">
+			Ultima actualización:
+			{{lastUpdate | date: 'd MMM yyyy'}}</p>
+		<input type="text" [(ngModel)]="searchTerm" (input)="searchTerm()" placeholder="Buscar productos..."
+			class="w-full h-10 text-center border-2 border-purple-400 bg-transparent rounded-lg" />
+	</div>
+
+	<rx-virtual-scroll-viewport autosize>
+		<div *rxVirtualFor="let product of products()" class="py-1 w-full">
+			<div class="flex flex-col bg-purple-600 md:flex-row 
+		 rounded-2xl items-center w-full px-4 py-2 gap-2">
+				<div class="text-xl bg-purple-300 md:bg-inherit font-semibold text-black text-balance w-full md:w-full rounded-lg 
+				text-center md:text-left">
+					{{ product.descripcion }}
+				</div>
+				<div class="flex flex-row justify-around w-full md:w-fit md:gap-3">
+					<div class="text-center flex-col">
+						<span class="text-sm text-slate-700">Costo:</span>
+						<div class="text-xl font-semibold text-slate-900">
+							{{ '$' + (product.pcosto | number:'1.2-2') }}
+						</div>
+					</div>
+					<div class="text-center flex-col">
+						<span class="text-base text-black font-bold">Venta:</span>
+						<div class="text-xl font-bold text-slate-900">
+							{{ '$' + (product.pventa | number:'1.2-2') }}
+						</div>
+					</div>
+					<div class="text-center flex-col">
+						<span class="text-sm text-slate-700">Mayoreo:</span>
+						<div class="text-xl font-semibold text-slate-900">
+							{{ '$' + (product.mayoreo | number:'1.2-2')}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</rx-virtual-scroll-viewport>
+</div>
