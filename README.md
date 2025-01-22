@@ -4,7 +4,7 @@ Herramientas web diseñadas para visualizar el catálogo de productos de la dulc
 
 ## Screenshots
 
-![Banner](placeholder)
+![Banner](https://raw.githubusercontent.com/danielnavarrowo/Checador-NavHer/refs/heads/main/src/app/img/readme-banner.png)
 
 ## Módulos 
 
