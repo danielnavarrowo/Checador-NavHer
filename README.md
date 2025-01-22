@@ -1,27 +1,31 @@
 # Checador NavHer
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.3.
+Herramientas web diseñadas para visualizar el catálogo de productos de la dulcería "NavHer".
 
-## Development server
+## Screenshots
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+![Banner](placeholder)
 
-## Code scaffolding
+## Módulos 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Checador de precios
 
-## Build
+Página simple que obtiene los datos de un artículo utilizando como argumento el código de barras.
+- [https://navher-angular.vercel.app/checador](https://navher-angular.vercel.app/checador)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Lista de productos
 
-## Running unit tests
+Lista con diseño responsivo que muestra el catálogo de productos de la empresa, mostrando más de 3000 elementos con un excelente rendimiento gracias al [Virtual Scrolling.](https://www.rx-angular.io/docs/template/virtual-scrolling)
+- [https://navher-angular.vercel.app/productos](https://navher-angular.vercel.app/productos)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+## Hecho con
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- [Angular](https://angular.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Supabase](https://supabase.com/)
 
-## Further help
+## Autores
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+  - **Daniel Navarro** -
+    [Perfil de GitHub](https://github.com/danielnavarrowo)

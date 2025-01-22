@@ -52,10 +52,10 @@ export class ChecadorComponent {
     this.product = this.supabaseService.productsSignal().find(product =>
       product.codigo === barcode);
     this.myForm.reset();
-    
+
     // Show the result
     this.showResult.set(true);
-    
+
     // Hide after 10 seconds
     this.timeoutId = setTimeout(() => {
       this.showResult.set(false);

@@ -10,28 +10,28 @@
 
 	<rx-virtual-scroll-viewport autosize>
 		<div *rxVirtualFor="let product of products()" class="py-1 w-full">
-			<div class="flex flex-col bg-purple-600 md:flex-row 
+			<div class="flex flex-col bg-purple-700 md:flex-row 
 		 rounded-2xl items-center w-full px-4 py-2 gap-2">
-				<div class="text-xl bg-purple-300 md:bg-inherit font-semibold text-black text-balance w-full md:w-full rounded-lg 
-				text-center md:text-left">
+				<div class="text-xl bg-purple-900 md:bg-inherit font-semibold text-purple-100 text-balance w-full md:w-full rounded-lg 
+				text-center md:text-left py-[2px]">
 					{{ product.descripcion }}
 				</div>
 				<div class="flex flex-row justify-around w-full md:w-fit md:gap-3">
 					<div class="text-center flex-col">
-						<span class="text-sm text-slate-700">Costo:</span>
-						<div class="text-xl font-semibold text-slate-900">
+						<span class="text-sm text-purple-200">Costo:</span>
+						<div class="text-xl font-semibold text-purple-200">
 							{{ '$' + (product.pcosto | number:'1.2-2') }}
 						</div>
 					</div>
 					<div class="text-center flex-col">
-						<span class="text-base text-black font-bold">Venta:</span>
-						<div class="text-xl font-bold text-slate-900">
+						<span class="text-base text-purple-200 font-bold">Venta:</span>
+						<div class="text-xl font-bold text-purple-200">
 							{{ '$' + (product.pventa | number:'1.2-2') }}
 						</div>
 					</div>
 					<div class="text-center flex-col">
-						<span class="text-sm text-slate-700">Mayoreo:</span>
-						<div class="text-xl font-semibold text-slate-900">
+						<span class="text-sm text-purple-200">Mayoreo:</span>
+						<div class="text-xl font-semibold text-purple-200">
 							{{ '$' + (product.mayoreo | number:'1.2-2')}}
 						</div>
 					</div>
