@@ -2,7 +2,7 @@ import { Injectable, signal } from '@angular/core'
 import { createClient, SupabaseClient } from '@supabase/supabase-js'
 import { from, Observable, map } from 'rxjs'
 import { Product } from '../interfaces/product.interface'
-import { environment } from '../../environments/environment'
+import { environment } from '../../environments/environment.prod'
 
 //Main service for interacting with Supabase and managing the products list from the server and local storage.
 
