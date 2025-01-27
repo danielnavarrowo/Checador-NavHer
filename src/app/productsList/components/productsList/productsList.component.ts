@@ -8,15 +8,18 @@ import {
   RxVirtualFor, // ViewRepeater
 } from '@rx-angular/template/experimental/virtual-scrolling';
 
+//Products list component. It shows a list of products and allows to search them by their description.
+
+
 @Component({
-    selector: 'app-products-list',
-    imports: [
-        CommonModule,
-        FormsModule,
-        RxVirtualFor, RxVirtualScrollViewportComponent, AutoSizeVirtualScrollStrategy
-    ],
-    templateUrl: './productsList.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-products-list',
+  imports: [
+    CommonModule,
+    FormsModule,
+    RxVirtualFor, RxVirtualScrollViewportComponent, AutoSizeVirtualScrollStrategy
+  ],
+  templateUrl: './productsList.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class ProductsListComponent {
@@ -26,13 +29,11 @@ export class ProductsListComponent {
   // Use a signal for the search term to trigger reactivity
   public searchTerm = signal('');
 
-  //Para mostrar cual es la ultima actualizacion de los datos
   public lastUpdate = localStorage.getItem('lastUpdate');
 
   // Computed signal for the filtered products
   products = computed(() => {
 
-    //Guarda todos los productos para mostrarlos cuando no se busque nada
     const allProducts = this.supabaseService.productsSignal();
 
     // Return all products if search term is empty

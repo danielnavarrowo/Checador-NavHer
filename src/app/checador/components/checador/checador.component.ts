@@ -5,6 +5,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { Product } from '../../../interfaces/product.interface';
 import { SupabaseService } from '../../../services/supabase.service';
 
+//Price checker component. It allows to search a product by its barcode and shows the product information.
+
 
 @Component({
   selector: 'app-checador',
@@ -22,9 +24,9 @@ import { SupabaseService } from '../../../services/supabase.service';
 
   .blurred {
     background: rgba(5,2,49,0.45);
--webkit-backdrop-filter: blur(2px);
-backdrop-filter: blur(2px);
-border: 1px solid rgba(5,2,49,0.225);
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+    border: 1px solid rgba(5,2,49,0.225);
   }
 
   `
@@ -44,11 +46,15 @@ export class ChecadorComponent {
   });
 
   searchByBarcode() {
+
+    //Used for restarting the timeout when a new search is made
     if (this.timeoutId) {
       clearTimeout(this.timeoutId);
     }
+
     var barcode = this.myForm.get('barcode')?.value;
-    barcode = barcode.replace(/^0+/, '');
+    barcode = barcode.replace(/^0+/, '');  //Eleventa deletes any zero at the beginning of the barcode, so we do the same here
+
     this.product = this.supabaseService.productsSignal().find(product =>
       product.codigo === barcode);
     this.myForm.reset();

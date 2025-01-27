@@ -14,7 +14,7 @@ import { SupabaseService } from './services/supabase.service';
 export class AppComponent implements OnInit {
   
   ngOnInit(): void {
-    //Checar si hay información en caché para cargarla
+    //Call to check if there are products in local storage.
     this.supabaseService.checkLocalStorage();
   }
   private supabaseService = inject(SupabaseService);

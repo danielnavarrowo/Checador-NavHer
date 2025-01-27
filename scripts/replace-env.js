@@ -1,3 +1,5 @@
+//File to replace environment variables in environment.prod.ts with the values from Vercel
+
 const fs = require('fs');
 const path = require('path');
 

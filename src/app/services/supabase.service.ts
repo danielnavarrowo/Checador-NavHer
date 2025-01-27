@@ -2,8 +2,9 @@ import { Injectable, signal } from '@angular/core'
 import { createClient, SupabaseClient } from '@supabase/supabase-js'
 import { from, Observable, map } from 'rxjs'
 import { Product } from '../interfaces/product.interface'
-import { environment } from '../../environments/environment.prod'
+import { environment } from '../../environments/environment'
 
+//Main service for interacting with Supabase and managing the products list from the server and local storage.
 
 @Injectable({ providedIn: 'root' })
 
@@ -18,7 +19,7 @@ export class SupabaseService {
       environment.supabaseKey!
     )
   }
-
+  //Fetches the products from the server and returns them as an observable.
   fetchProducts(): Observable<Product[] | null> {
     return from(
       this.supabase.from('productos')
@@ -33,7 +34,7 @@ export class SupabaseService {
       })
     );
   }
-
+  //Gets the last update date from the server so we can compare it with the local storage date.
   fetchLastUpdate(): Observable<Date | null> {
     return from(
       this.supabase.rpc('get_date')
@@ -49,6 +50,7 @@ export class SupabaseService {
     );
   }
 
+  //Checks if there are any products saved in local storage, and if so, it compares the last update date with the server date to decide if it should update the products from the server.
   checkLocalStorage(): void {
     const localProducts = localStorage.getItem('Productos');
     const localStgDate = localStorage.getItem('lastUpdate') ? new Date(localStorage.getItem('lastUpdate') + 'T00:00:00') : null;
