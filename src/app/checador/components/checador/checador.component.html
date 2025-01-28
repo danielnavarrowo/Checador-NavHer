@@ -3,15 +3,14 @@
 		<div class=" flex flex-col gap-16 w-full">
 			<h1 class="text-6xl font-bold text-center text-white">Checador de precios</h1>
 			<form [formGroup]="myForm" (ngSubmit)="searchByBarcode()">
-				<input #barcodeInput type="text" formControlName="barcode" class="w-full 
-				font-mono text-black p-4 text-2xl text-center rounded-2xl 
-				bg-pink-50 shadow-2xl shadow-pink-600" placeholder="Acerca el código de barras del producto al lector"
+				<input #barcodeInput type="text" formControlName="barcode" class="w-full glass
+				font-mono text-white p-4 text-2xl text-center rounded-2xl placeholder-slate-200" placeholder="Acerca el código de barras del producto al lector"
 					(submit)="searchByBarcode()" autofocus />
 			</form>
 		</div>
 
-		<div *ngIf="showResult()" class="text-white blurred flex flex-col text-center
-    text-pretty text-3xl font-semibold rounded-2xl w-full p-4 py-8 gap-4">
+		<div *ngIf="showResult()" class="text-white glass flex flex-col text-center
+    text-pretty text-3xl font-semibold rounded-2xl w-fit px-32 py-8 gap-4">
 			@if (product) {
 			<h2>Nombre del producto:</h2>
 			<p class="text-5xl">{{product.descripcion}}</p>

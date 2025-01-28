@@ -13,21 +13,20 @@ import { SupabaseService } from '../../../services/supabase.service';
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './checador.component.html',
   styles: `
-  .placeholder-center::placeholder {
-	text-align: center;
-  }
 
   .main {
     background: rgb(119,147,232);
     background: radial-gradient(circle, rgba(119,147,232,1) 14%, rgba(198,49,193,1) 44%, rgba(66,81,172,1) 100%);
   }
 
-  .blurred {
-    background: rgba(5,2,49,0.45);
-    -webkit-backdrop-filter: blur(2px);
-    backdrop-filter: blur(2px);
-    border: 1px solid rgba(5,2,49,0.225);
-  }
+  .glass{
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border:2px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
 
   `
 })
