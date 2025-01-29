@@ -1,22 +1,22 @@
 <div class="h-screen flex items-center justify-center p-4 
-bg-[url('/assets/bg1.jpg')] bg-cover bg-center bg-black bg-opacity-40 bg-blend-multiply">
-	<span class="glass flex flex-col w-96 p-6 gap-4">
+bg-[url('/assets/bg1.webp')] bg-cover bg-center bg-black bg-opacity-40 bg-blend-multiply">
+	<span class="glass flex flex-col w-96 max-h-screen overflow-auto p-6 gap-4">
 		<svg class="self-center" xmlns="http://www.w3.org/2000/svg" height="96px" viewBox="0 -960 960 960" width="96px"
 			fill="#e0f2fe">
 			<path
 				d="M480-450q-58 0-97.5-39.5T343-587q0-58 39.5-97.5T480-724q58 0 97.5 39.5T617-587q0 58-39.5 97.5T480-450Zm0-60q34 0 55.5-21.5T557-587q0-34-21.5-55.5T480-664q-34 0-55.5 21.5T403-587q0 34 21.5 55.5T480-510Zm0 429q-140-35-230-162.5T160-523v-238l320-120 320 120v238q0 152-90 279.5T480-81Zm0-399Zm0-337-260 98v196q0 63 17.5 120.5T287-296q46-25 93.5-37.5T480-346q52 0 99.5 12.5T673-296q32-49 49.5-106.5T740-523v-196l-260-98Zm0 531q-39 0-78 10t-77 30q32 35 71 61.5t84 41.5q45-15 84-41.5t71-61.5q-38-20-77-30t-78-10Z" />
 		</svg>
 		<h2 class="self-center pretendard-thin text-xl text-slate-100 text-center">Inicia sesión para continuar</h2>
-		<form class="w-full text-sky-100 flex flex-col gap-8 mt-12" [formGroup]="loginForm">
+		<form class="w-full text-sky-100 flex flex-col gap-8 mt-4 " [formGroup]="loginForm">
 			<div class="flex flex-col gap-2">
 				<h3 class="pretendard-bold text-xl">Número de teléfono</h3>
-				<input type="tel" formControlName="number"
-					class="w-full rounded-lg bg-white bg-opacity-20 text-xl pretendard text-slate-400 px-2 py-2" />
+				<input type="tel" formControlName="number" required="true" pattern="[0-9]{10}" minlength="10" maxlength="10"
+					class="w-full rounded-lg bg-white bg-opacity-20 text-xl pretendard px-2 py-2 invalid:border-red-500 invalid:border-2" />
 			</div>
 			<div class="flex flex-col gap-2">
 				<h3 class="pretendard-bold text-xl">Contraseña</h3>
 				<input type="password" formControlName="password"
-					class="w-full rounded-lg bg-white bg-opacity-20 text-xl pretendard text-slate-400 px-2 py-2" />
+					class="w-full rounded-lg bg-white bg-opacity-20 text-xl pretendard  px-2 py-2" />
 			</div>
 			<button type="submit" class="bg-black bg-opacity-50 rounded-full size-fit p-3 self-center"
 				title="Iniciar sesión">

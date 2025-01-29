@@ -16,7 +16,7 @@ export class LoginPageComponent {
 
 
   public loginForm: FormGroup = this.fb.group({
-    number: ['', Validators.required],
+    number: ['', Validators.required, Validators.maxLength(10), Validators.minLength(10), Validators.pattern('^[0-9]*$')],
     password: ['', Validators.required]
   });
 }
