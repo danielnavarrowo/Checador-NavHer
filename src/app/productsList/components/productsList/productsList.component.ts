@@ -8,6 +8,8 @@ import {
   RxVirtualFor, // ViewRepeater
 } from '@rx-angular/template/experimental/virtual-scrolling';
 
+
+
 //Products list component. It shows a list of products and allows to search them by their description.
 
 

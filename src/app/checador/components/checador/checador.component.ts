@@ -1,9 +1,9 @@
 import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Product } from '../../../interfaces/product.interface';
 import { SupabaseService } from '../../../services/supabase.service';
+
 
 //Price checker component. It allows to search a product by its barcode and shows the product information.
 
@@ -18,20 +18,12 @@ import { SupabaseService } from '../../../services/supabase.service';
     background: rgb(119,147,232);
     background: radial-gradient(circle, rgba(119,147,232,1) 14%, rgba(198,49,193,1) 44%, rgba(66,81,172,1) 100%);
   }
-
-  .glass{
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 20px;
-    border:2px solid rgba(255, 255, 255, 0.18);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-}
-
   `
 })
 
 export class ChecadorComponent {
+
+  
 
   private fb = inject(FormBuilder);
   private supabaseService = inject(SupabaseService);

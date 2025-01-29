@@ -1,5 +1,5 @@
 import { Injectable, signal } from '@angular/core'
-import { createClient, SupabaseClient } from '@supabase/supabase-js'
+import { AuthResponse, createClient, SupabaseClient } from '@supabase/supabase-js'
 import { from, Observable, map } from 'rxjs'
 import { Product } from '../interfaces/product.interface'
 import { environment } from '../../environments/environment.prod'
@@ -75,4 +75,15 @@ export class SupabaseService {
       }
     });
   }
+
+
+
+  login(phoneNumber: string, password: string): Observable<AuthResponse> {
+    return from(this.supabase.auth.signInWithPassword
+      ({
+        phone: phoneNumber,
+        password: password
+      })
+    )
+  } 
 }
