@@ -6,7 +6,8 @@ import { authGuard } from './guards/auth.guard';
 export const routes: Routes = [
 	{
 		path: "checador",
-		component: ChecadorComponent
+		component: ChecadorComponent,
+		canActivate: [authGuard]
 	},
 	{
 		path: "productos",
@@ -21,6 +22,6 @@ export const routes: Routes = [
 	},
 	{
 		path: "**",
-		redirectTo: "login"
+		redirectTo: "checador"
 	},
 ];

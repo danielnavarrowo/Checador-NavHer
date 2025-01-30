@@ -1,5 +1,5 @@
 import { Injectable, signal } from '@angular/core'
-import { AuthResponse, createClient, SupabaseClient } from '@supabase/supabase-js'
+import { AuthError, AuthResponse, createClient, SupabaseClient } from '@supabase/supabase-js'
 import { from, Observable, map } from 'rxjs'
 import { Product } from '../interfaces/product.interface'
 import { environment } from '../../environments/environment.prod'
@@ -10,8 +10,10 @@ import { environment } from '../../environments/environment.prod'
 
 export class SupabaseService {
 
-  private supabase: SupabaseClient
+  supabase: SupabaseClient
   productsSignal = signal<Product[]>([]);
+  currentUser = signal<{email : string} | null>(null);
+  isLoggedIn = signal<boolean>(false);
 
   constructor() {
     this.supabase = createClient(
@@ -78,12 +80,17 @@ export class SupabaseService {
 
 
 
-  login(phoneNumber: string, password: string): Observable<AuthResponse> {
+  login(email: string, password: string): Observable<AuthResponse> {
     return from(this.supabase.auth.signInWithPassword
       ({
-        phone: phoneNumber,
+        email: email,
         password: password
       })
     )
-  } 
+  }
+
+  logOut(): Observable<{ error: AuthError | null; }> {
+    return from(this.supabase.auth.signOut())
+  }
 }
+

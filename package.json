@@ -20,6 +20,7 @@
     "@angular/router": "^19.0.6",
     "@rx-angular/template": "^19.2.0",
     "@supabase/supabase-js": "^2.45.4",
+    "@tailwindcss/postcss": "^4.0.0",
     "@vercel/postgres": "^0.10.0",
     "json-server": "^1.0.0-beta.2",
     "rxjs": "~7.8.0",
@@ -39,7 +40,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "postcss": "^8.4.47",
+    "postcss": "^8.5.1",
     "tailwindcss": "^4.0.0",
     "typescript": "~5.5.2"
   }

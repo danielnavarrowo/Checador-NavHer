@@ -1,19 +1,19 @@
 <div class="h-screen box-border p-4 flex flex-col">
 	<div class="flex flex-col gap-4 text-purple-950 pb-4">
-		<h1 class="text-center text-pretty text-4xl font-semibold">Lista de productos</h1>
-		<p class="text-center text-pretty text-xs font-normal">
+		<h1 class="text-center text-pretty text-4xl pretendard-bold">Lista de productos</h1>
+		<p class="text-center text-pretty text-sm pretendard-thin">
 			Ultima actualización:
 			{{lastUpdate | date: 'd MMM yyyy'}}</p>
 		<input type="text" [(ngModel)]="searchTerm" (input)="searchTerm()" placeholder="Buscar productos..."
-			class="w-full h-10 text-center border-2 border-purple-400 bg-transparent rounded-lg" />
+			class="w-full h-10 text-center border-2 border-purple-400 bg-transparent rounded-lg pretendard" />
 	</div>
 
 	<!-- Virtual Scroll Viewport -->
 	<rx-virtual-scroll-viewport autosize>
 		<div *rxVirtualFor="let product of products()" class="py-1 w-full">
 			<div class="flex flex-col bg-purple-700 md:flex-row 
-		 rounded-2xl items-center w-full px-4 py-2 gap-2">
-				<div class="text-xl bg-purple-900 md:bg-inherit font-semibold text-purple-100 text-balance w-full md:w-full rounded-lg 
+		 rounded-2xl items-center w-full px-4 py-2 gap-2 pretendard">
+				<div class="text-xl bg-purple-900 md:bg-inherit pretendard-bold text-purple-100 text-balance w-full md:w-full rounded-lg 
 				text-center md:text-left py-[2px]">
 					{{ product.descripcion }}
 				</div>
