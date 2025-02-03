@@ -1,8 +1,9 @@
-import { Injectable, signal } from '@angular/core'
+import { inject, Injectable, signal } from '@angular/core'
 import { AuthError, AuthResponse, createClient, SupabaseClient } from '@supabase/supabase-js'
 import { from, Observable, map } from 'rxjs'
 import { Product } from '../interfaces/product.interface'
 import { environment } from '../../environments/environment.prod'
+import { Router } from '@angular/router'
 
 //Main service for interacting with Supabase and managing the products list from the server and local storage.
 
@@ -10,6 +11,7 @@ import { environment } from '../../environments/environment.prod'
 
 export class SupabaseService {
 
+  private router = inject(Router);
   supabase: SupabaseClient
   productsSignal = signal<Product[]>([]);
   currentUser = signal<{email : string} | null>(null);
@@ -90,7 +92,9 @@ export class SupabaseService {
   }
 
   logOut(): Observable<{ error: AuthError | null; }> {
+    this.router.navigate(['/login']);
     return from(this.supabase.auth.signOut())
+    
   }
 }
 

@@ -33,7 +33,7 @@ export class LoginPageComponent {
             console.error('Error logging in:', response.error.message);
           } else {
             this.errorMsg = null;
-            this.router.navigate(['/productos']);
+            this.router.navigate(['/checador']);
           }
         }
       );

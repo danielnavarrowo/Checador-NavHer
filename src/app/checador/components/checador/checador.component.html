@@ -13,13 +13,14 @@
 		<div *ngIf="showResult()" class="text-white glass flex flex-col text-center
     text-pretty text-3xl pretendard rounded-2xl w-fit px-32 py-8 gap-4">
 			@if (product) {
-			<h2 class="pretendard-bold">Nombre del producto:</h2>
-			<p class="text-5xl">{{product.descripcion}}</p>
-			<h2 class="pretendard-bold">Precio:</h2>
-			<p class="text-5xl">{{'$' + (product.pventa | number:'1.2-2')}}</p>
+			<h2>Nombre del producto:</h2>
+			<p class="text-5xl pretendard-bold">{{product.descripcion}}</p>
+			<h2>Precio:</h2>
+			<p class="text-5xl pretendard-bold">{{'$' + (product.pventa | number:'1.2-2')}}</p>
 			} @else {
 			<h2 class="text-red-800 text-5xl pretendard-bold text-center">Producto no encontrado.</h2>
 			}
 		</div>
 	</div>
+	
 </div>

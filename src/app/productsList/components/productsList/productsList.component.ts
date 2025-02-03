@@ -7,6 +7,7 @@ import {
   RxVirtualScrollViewportComponent, // Viewport
   RxVirtualFor, // ViewRepeater
 } from '@rx-angular/template/experimental/virtual-scrolling';
+import { RouterLink } from '@angular/router';
 
 
 
@@ -18,7 +19,7 @@ import {
   imports: [
     CommonModule,
     FormsModule,
-    RxVirtualFor, RxVirtualScrollViewportComponent, AutoSizeVirtualScrollStrategy
+    RxVirtualFor, RxVirtualScrollViewportComponent, AutoSizeVirtualScrollStrategy, RouterLink
   ],
   templateUrl: './productsList.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -46,4 +47,8 @@ export class ProductsListComponent {
       product.descripcion.toLowerCase().includes(this.searchTerm().toLowerCase())
     );
   });
+
+  LogOut() {
+    this.supabaseService.logOut();
+  }
 }

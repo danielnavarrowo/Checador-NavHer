@@ -26,11 +26,12 @@ export class ChecadorComponent {
   
 
   private fb = inject(FormBuilder);
-  private supabaseService = inject(SupabaseService);
-
+  public supabaseService = inject(SupabaseService);
   public product: Product | undefined = undefined;
   public showResult = signal(false);
   private timeoutId: NodeJS.Timeout | undefined;
+  
+
 
   public myForm: FormGroup = this.fb.group({
     barcode: ['', Validators.required]

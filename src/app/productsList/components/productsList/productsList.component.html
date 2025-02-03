@@ -1,7 +1,11 @@
 <div class="h-screen box-border p-4 flex flex-col">
 	<div class="flex flex-col gap-4 text-purple-950 pb-4">
-		<h1 class="text-center text-pretty text-4xl pretendard-bold">Lista de productos</h1>
-		<p class="text-center text-pretty text-sm pretendard-thin">
+		<div class="flex justify-between text-purple-950 text-center">
+			<button routerLink="/checador">Ir a checador</button>
+			<h1 class="text-4xl pretendard-bold">Lista de productos</h1>
+			<button (click)="LogOut()" >Cerrar sesión</button>
+		</div>
+		<p class="text-center text-sm pretendard-thin">
 			Ultima actualización:
 			{{lastUpdate | date: 'd MMM yyyy'}}</p>
 		<input type="text" [(ngModel)]="searchTerm" (input)="searchTerm()" placeholder="Buscar productos..."
