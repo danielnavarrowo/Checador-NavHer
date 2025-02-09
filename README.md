@@ -1,5 +1,5 @@
 # Checador NavHer
-![Banner](https://raw.githubusercontent.com/danielnavarrowo/Checador-NavHer/refs/heads/main/src/app/img/readme-banner.png)
+![Banner](https://raw.githubusercontent.com/danielnavarrowo/Checador-NavHer/refs/heads/main/src/app/img/readme-banner.webp)
 
 Herramientas web diseñadas para visualizar el catálogo de productos de la dulcería "NavHer".
 
