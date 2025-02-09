@@ -14,7 +14,8 @@ export const authGuard: CanActivateFn = async (route, state) => {
     supabaseService.currentUser.set({ email: session.user.email! });
     return true;
   } else {
-    router.navigate(['/login']);
+    // Pass the attempted URL in query params so we can redirect after login.
+    router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
     return false;
   }
 };
