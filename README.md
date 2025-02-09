@@ -1,13 +1,10 @@
 # Checador NavHer
+![Banner](https://raw.githubusercontent.com/danielnavarrowo/Checador-NavHer/refs/heads/main/src/app/img/readme-banner.png)
 
 Herramientas web diseñadas para visualizar el catálogo de productos de la dulcería "NavHer".
 
-## Screenshots
-
-![Banner](https://raw.githubusercontent.com/danielnavarrowo/Checador-NavHer/refs/heads/main/src/app/img/readme-banner.png)
 
 ## Módulos 
-
 ### Checador de precios
 
 Página simple que obtiene los datos de un artículo utilizando como argumento el código de barras.
