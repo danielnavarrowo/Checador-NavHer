@@ -15,8 +15,8 @@ import { SupabaseService } from '../../../services/supabase.service';
   styles: `
 
   .main {
-    background: rgb(119,147,232);
-    background: radial-gradient(circle, rgba(119,147,232,1) 14%, rgba(198,49,193,1) 44%, rgba(66,81,172,1) 100%);
+    background: rgb(0,166,215);
+background: radial-gradient(circle, rgba(0,166,215,1) 11%, rgba(61,255,122,1) 100%);
   }
   `
 })
