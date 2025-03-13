@@ -2,12 +2,11 @@
 	<div class=" main flex flex-col box-border h-full rounded-2xl p-4 justify-center items-center gap-12">
 		<div class=" flex flex-col gap-16 w-full">
 			<h1 class="text-6xl pretendard-bold text-center text-white">Checador de precios</h1>
-			
+
 			<form [formGroup]="myForm" (ngSubmit)="searchByBarcode()">
 				<input #barcodeInput type="text" formControlName="barcode" class="w-full bg-white mix-blend-screen
-				font-mono p-4 text-2xl text-center rounded-2xl"
-					placeholder="Acerca el código de barras del producto al lector" (submit)="searchByBarcode()"
-					autofocus />
+				font-mono p-4 text-3xl text-center rounded-2xl font-bold" placeholder="Acerca el código de barras del producto al lector"
+					(submit)="searchByBarcode()" autofocus />
 			</form>
 		</div>
 
@@ -26,18 +25,17 @@
 		<div *ngIf="showResult()" class="
 		bg-white
 		flex flex-col text-center
-    text-pretty text-3xl pretendard rounded-2xl 
-	w-fit px-32 py-8 gap-4 mix-blend-screen">
+    text-pretty text-4xl pretendard rounded-2xl 
+	w-fit px-16 py-8 gap-4 mix-blend-screen">
 			@if (product) {
 			<h2>Nombre del producto:</h2>
-			<p class="text-5xl pretendard-bold">{{product.descripcion}}</p>
+			<p class="text-6xl pretendard-bold">{{product.descripcion}}</p>
 			<h2>Precio:</h2>
-			<p class="text-5xl pretendard-bold">{{'$' + (product.pventa | number:'1.2-2')}}</p>
+			<p class="text-6xl pretendard-bold">{{'$' + (product.pventa | number:'1.2-2')}}</p>
 			} @else {
-			<h2 class="text-red-800 text-5xl pretendard-bold text-center">Producto no encontrado.</h2>
+			<h2 class="text-6xl pretendard-bold text-center">Producto no encontrado.</h2>
 			}
 		</div>
-
 
 	</div>
 
