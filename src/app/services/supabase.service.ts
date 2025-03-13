@@ -2,7 +2,7 @@ import { inject, Injectable, signal } from '@angular/core'
 import { AuthError, AuthResponse, createClient, SupabaseClient } from '@supabase/supabase-js'
 import { from, Observable, map } from 'rxjs'
 import { Product } from '../interfaces/product.interface'
-import { environment } from '../../environments/environment.prod'
+import { supabaseUrl, supabaseKey } from '../../environments/environment.prod'
 import { Router } from '@angular/router'
 
 //Main service for interacting with Supabase and managing the products list from the server and local storage.
@@ -19,8 +19,8 @@ export class SupabaseService {
 
   constructor() {
     this.supabase = createClient(
-      environment.supabaseUrl!,
-      environment.supabaseKey!
+      supabaseUrl!,
+      supabaseKey!
     )
   }
   //Fetches the products from the server and returns them as an observable.

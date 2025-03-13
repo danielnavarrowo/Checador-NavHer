@@ -20,9 +20,10 @@ export class AppComponent implements OnInit {
     // Listen for auth changes
     this.supabaseService.supabase.auth.onAuthStateChange(async (event, session) => {
       if (event === 'SIGNED_IN') {
+        this.supabaseService.checkLocalStorage();
         this.supabaseService.currentUser.set({ email: session?.user.email! });
         this.supabaseService.isLoggedIn.set(true);
-        this.supabaseService.checkLocalStorage();
+        
       } else if (event === 'SIGNED_OUT') {
 
         this.supabaseService.currentUser.set(null);
