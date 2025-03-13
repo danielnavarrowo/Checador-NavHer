@@ -93,6 +93,7 @@ export class SupabaseService {
 
   logOut(): Observable<{ error: AuthError | null; }> {
     this.router.navigate(['/login']);
+    localStorage.clear();
     return from(this.supabase.auth.signOut())
     
   }

@@ -10,6 +10,7 @@ export const authGuard: CanActivateFn = async (route, state) => {
   const { data: { session } } = await supabaseService.supabase.auth.getSession();
 
   if (session) {
+    supabaseService.checkLocalStorage();
     supabaseService.isLoggedIn.set(true);
     supabaseService.currentUser.set({ email: session.user.email! });
     return true;

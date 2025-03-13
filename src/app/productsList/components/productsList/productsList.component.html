@@ -1,6 +1,6 @@
 <div class="h-screen box-border p-4 flex flex-col">
-	<div class="flex flex-col gap-4 text-purple-950 pb-4">
-		<div class="flex justify-between text-purple-950 text-center">
+	<div class="flex flex-col gap-4 text-green-950 pb-4">
+		<div class="flex justify-between text-green-950 text-center">
 			<p class="cursor-pointer" routerLink="/checador">Ir a checador</p>
 			<h1 class="text-4xl pretendard-bold">Lista de productos</h1>
 			<p class="cursor-pointer" (click)="LogOut()" >Cerrar sesión</p>
@@ -9,34 +9,34 @@
 			Ultima actualización:
 			{{lastUpdate | date: 'd MMM yyyy'}}</p>
 		<input type="text" [(ngModel)]="searchTerm" (input)="searchTerm()" placeholder="Buscar productos..."
-			class="w-full h-10 text-center border-2 border-purple-400 bg-transparent rounded-lg pretendard" />
+			class="w-full h-10 text-center border-2 border-green-400 bg-transparent rounded-lg pretendard" />
 	</div>
 
 	<!-- Virtual Scroll Viewport -->
 	<rx-virtual-scroll-viewport autosize>
 		<div *rxVirtualFor="let product of products()" class="py-1 w-full">
-			<div class="flex flex-col bg-purple-700 md:flex-row 
+			<div class="flex flex-col bg-green-700 md:flex-row 
 		 rounded-2xl items-center w-full px-4 py-2 gap-2 pretendard">
-				<div class="text-xl bg-purple-900 md:bg-inherit pretendard-bold text-purple-100 text-balance w-full md:w-full rounded-lg 
+				<div class="text-xl bg-green-900 md:bg-inherit pretendard-bold text-green-100 text-balance w-full md:w-full rounded-lg 
 				text-center md:text-left py-[2px]">
 					{{ product.descripcion }}
 				</div>
 				<div class="flex flex-row justify-around w-full md:w-fit md:gap-3">
 					<div class="text-center flex-col">
-						<span class="text-sm text-purple-200">Costo:</span>
-						<div class="text-xl font-semibold text-purple-200">
+						<span class="text-sm text-green-200">Costo:</span>
+						<div class="text-xl font-semibold text-green-200">
 							{{ '$' + (product.pcosto | number:'1.2-2') }}
 						</div>
 					</div>
 					<div class="text-center flex-col">
-						<span class="text-base text-purple-200 font-bold">Venta:</span>
-						<div class="text-xl font-bold text-purple-200">
+						<span class="text-base text-green-200 font-bold">Venta:</span>
+						<div class="text-xl font-bold text-green-200">
 							{{ '$' + (product.pventa | number:'1.2-2') }}
 						</div>
 					</div>
 					<div class="text-center flex-col">
-						<span class="text-sm text-purple-200">Mayoreo:</span>
-						<div class="text-xl font-semibold text-purple-200">
+						<span class="text-sm text-green-200">Mayoreo:</span>
+						<div class="text-xl font-semibold text-green-200">
 							{{ '$' + (product.mayoreo | number:'1.2-2')}}
 						</div>
 					</div>
