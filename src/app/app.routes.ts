@@ -1,12 +1,11 @@
 import { Routes } from '@angular/router';
-import { ChecadorComponent } from './checador/components/checador/checador.component';
 import { authGuard } from './guards/auth.guard';
 
 
 export const routes: Routes = [
 	{
 		path: "checador",
-		component: ChecadorComponent,
+		loadComponent: () => import('./checador/components/checador/checador.component').then(m => m.ChecadorComponent),
 		canActivate: [authGuard]
 	},
 	{

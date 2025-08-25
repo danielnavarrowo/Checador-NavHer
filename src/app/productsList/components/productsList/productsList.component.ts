@@ -1,6 +1,4 @@
-import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, signal, computed } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { SupabaseService } from '../../../services/supabase.service';
 import {
   AutoSizeVirtualScrollStrategy, // ScrollStrategy
@@ -8,6 +6,8 @@ import {
   RxVirtualFor, // ViewRepeater
 } from '@rx-angular/template/experimental/virtual-scrolling';
 import { RouterLink } from '@angular/router';
+import { DatePipe, DecimalPipe } from '@angular/common';
+import { Product } from '../../../interfaces/product.interface';
 
 
 
@@ -17,8 +17,7 @@ import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-products-list',
   imports: [
-    CommonModule,
-    FormsModule,
+    DatePipe, DecimalPipe,
     RxVirtualFor, RxVirtualScrollViewportComponent, AutoSizeVirtualScrollStrategy, RouterLink
   ],
   templateUrl: './productsList.component.html',
@@ -27,15 +26,15 @@ import { RouterLink } from '@angular/router';
 
 export class ProductsListComponent {
 
-  private supabaseService = inject(SupabaseService);
+  private readonly supabaseService = inject(SupabaseService);
 
   // Use a signal for the search term to trigger reactivity
-  public searchTerm = signal('');
+  public readonly searchTerm = signal('');
 
-  public lastUpdate = localStorage.getItem('lastUpdate');
+  public readonly lastUpdate = localStorage.getItem('lastUpdate');
 
   // Computed signal for the filtered products
-  products = computed(() => {
+  readonly products = computed(() => {
 
     const allProducts = this.supabaseService.productsSignal();
 
@@ -48,7 +47,10 @@ export class ProductsListComponent {
     );
   });
 
-  LogOut() {
+  // TrackBy function for better performance
+  readonly trackByProductId = (index: number, product: Product): string => product.codigo;
+
+  logOut(): void {
     this.supabaseService.logOut();
   }
 }

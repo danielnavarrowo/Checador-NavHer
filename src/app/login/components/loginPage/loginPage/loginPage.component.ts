@@ -1,11 +1,10 @@
-import { CommonModule } from '@angular/common';
-import { Component, ChangeDetectionStrategy, inject, OnInit, signal } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, signal } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SupabaseService } from '../../../../services/supabase.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [ReactiveFormsModule],
   styles: `
    
   `,
@@ -14,26 +13,24 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class LoginPageComponent {
 
+  private readonly fb = inject(FormBuilder);
+  private readonly supabase = inject(SupabaseService);
+  private readonly router = inject(Router);
+  private readonly activatedRoute = inject(ActivatedRoute);
 
-  private fb = inject(FormBuilder);
-  private supabase = inject(SupabaseService);
-  private router = inject(Router);
-  private activatedRoute = inject(ActivatedRoute);
-
-
-  public loginForm: FormGroup = this.fb.group({
+  public readonly loginForm: FormGroup = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(4)]]
   });
 
-  fillAsGuest() {
+  fillAsGuest(): void {
     this.loginForm.setValue({
       email: 'guest@guest.com',
       password: 'guest123'
     });
   }
 
-  errorMsg = signal<string | null>(null);
+  readonly errorMsg = signal<string | null>(null);
   
   onSubmit(): void {
     if (this.loginForm.valid) {

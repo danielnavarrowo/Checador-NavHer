@@ -1,50 +1,49 @@
-<div class="h-screen flex items-center justify-center p-4 
-bg-[url('/assets/bg1.webp')] bg-cover bg-center bg-black/40 bg-blend-multiply">
-	<span class="glass flex flex-col w-96 max-h-screen overflow-auto p-6 gap-4">
-		<svg class="self-center" xmlns="http://www.w3.org/2000/svg" height="82px" viewBox="0 -960 960 960" width="82px"
+<div class="h-screen flex items-center justify-center p-4 bg-[url('/assets/bg1.webp')] bg-cover bg-center bg-black/40 bg-blend-multiply">
+	<span [class]="'glass flex flex-col w-96 max-h-screen overflow-auto p-6 gap-4'">
+		<svg [class]="'self-center'" xmlns="http://www.w3.org/2000/svg" height="82px" viewBox="0 -960 960 960" width="82px"
 			fill="#e0f2fe">
 			<path
 				d="M480-450q-58 0-97.5-39.5T343-587q0-58 39.5-97.5T480-724q58 0 97.5 39.5T617-587q0 58-39.5 97.5T480-450Zm0-60q34 0 55.5-21.5T557-587q0-34-21.5-55.5T480-664q-34 0-55.5 21.5T403-587q0 34 21.5 55.5T480-510Zm0 429q-140-35-230-162.5T160-523v-238l320-120 320 120v238q0 152-90 279.5T480-81Zm0-399Zm0-337-260 98v196q0 63 17.5 120.5T287-296q46-25 93.5-37.5T480-346q52 0 99.5 12.5T673-296q32-49 49.5-106.5T740-523v-196l-260-98Zm0 531q-39 0-78 10t-77 30q32 35 71 61.5t84 41.5q45-15 84-41.5t71-61.5q-38-20-77-30t-78-10Z" />
 		</svg>
-		<h2 class="self-center pretendard-bold text-2xl text-slate-100 text-center">Inicia sesión para continuar</h2>
-		<div class="self-center pretendard-thin text-slate-100 text-center">
+		<h2 [class]="'self-center pretendard-bold text-2xl text-slate-100 text-center'">Inicia sesión para continuar</h2>
+		<div [class]="'self-center pretendard-thin text-slate-100 text-center'">
 			<p>¿No tienes cuenta?</p>
-			<p class="underline cursor-pointer" (click)="fillAsGuest()">Inicia como invitado</p>
+			<button [class]="'underline cursor-pointer bg-transparent border-none text-inherit'" (click)="fillAsGuest()">Inicia como invitado</button>
 		</div>
 		
-		<form class="w-full text-sky-100 flex flex-col gap-8 mt-4 " [formGroup]="loginForm">
-			<div class="flex flex-col gap-2">
-				<label for="email" class="pretendard-bold text-xl">Correo electrónico</label>
+		<form [class]="'w-full text-sky-100 flex flex-col gap-8 mt-4'" [formGroup]="loginForm">
+			<div [class]="'flex flex-col gap-2'">
+				<label for="email" [class]="'pretendard-bold text-xl'">Correo electrónico</label>
 				<input id="email" type="email" formControlName="email" required
-					class="w-full rounded-lg bg-white/20 text-xl pretendard px-2 py-2" />
+					[class]="'w-full rounded-lg bg-white/20 text-xl pretendard px-2 py-2'" />
 
 				@if (loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty ||
 				loginForm.get('email')?.touched)) {
 				@if (loginForm.get('email')?.errors?.['required']) {
-				<p class="text-red-300">El correo electrónico es requerido.</p>
+				<p [class]="'text-red-300'">El correo electrónico es requerido.</p>
 				}
 				@if (loginForm.get('email')?.errors?.['email']) {
-				<p class="text-red-300">El correo electrónico debe ser válido.</p>
+				<p [class]="'text-red-300'">El correo electrónico debe ser válido.</p>
 				}
 				}
 			</div>
-			<div class="flex flex-col gap-2">
-				<label for="password" class="pretendard-bold text-xl">Contraseña</label>
+			<div [class]="'flex flex-col gap-2'">
+				<label for="password" [class]="'pretendard-bold text-xl'">Contraseña</label>
 				<input id="password" type="password" required formControlName="password"
-					class="w-full rounded-lg bg-white/20 text-xl pretendard  px-2 py-2" />
+					[class]="'w-full rounded-lg bg-white/20 text-xl pretendard px-2 py-2'" />
 
 				@if(loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty ||
 				loginForm.get('password')?.touched)) {
 				@if(loginForm.get('password')?.errors?.['required']) {
-				<p class="text-red-300">La contraseña es requerida.</p>
+				<p [class]="'text-red-300'">La contraseña es requerida.</p>
 				}
 				@if(loginForm.get('password')?.errors?.['minlength']) {
-				<p class="text-red-300">La contraseña debe tener al menos 4 caracteres.</p>
+				<p [class]="'text-red-300'">La contraseña debe tener al menos 4 caracteres.</p>
 				}
 				}				
 			</div>
 			<button type="submit" (click)="onSubmit()"
-				class="bg-black/40 rounded-full size-fit p-3 self-center cursor-pointer hover:bg-black/90"
+				[class]="'bg-black/40 rounded-full size-fit p-3 self-center cursor-pointer hover:bg-black/90'"
 				title="Iniciar sesión">
 				<svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px"
 					fill="#FFFFFF">
@@ -52,8 +51,8 @@ bg-[url('/assets/bg1.webp')] bg-cover bg-center bg-black/40 bg-blend-multiply">
 				</svg>
 			</button>
 			@if (errorMsg()) {
-				<div class="self-center bg-black/40 rounded-lg border border-red-500 p-1" >
-					<p class="text-red-400 pretendard-bold text-center text-lg ">Error al iniciar sesión: {{ errorMsg() }}</p>
+				<div [class]="'self-center bg-black/40 rounded-lg border border-red-500 p-1'" >
+					<p [class]="'text-red-400 pretendard-bold text-center text-lg'">Error al iniciar sesión: {{ errorMsg() }}</p>
 				</div>
 				
 			}

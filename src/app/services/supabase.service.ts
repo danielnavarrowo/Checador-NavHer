@@ -11,11 +11,11 @@ import { Router } from '@angular/router'
 
 export class SupabaseService {
 
-  private router = inject(Router);
-  supabase: SupabaseClient
-  productsSignal = signal<Product[]>([]);
-  currentUser = signal<{email : string} | null>(null);
-  isLoggedIn = signal<boolean>(false);
+  private readonly router = inject(Router);
+  readonly supabase: SupabaseClient;
+  readonly productsSignal = signal<Product[]>([]);
+  readonly currentUser = signal<{email : string} | null>(null);
+  readonly isLoggedIn = signal<boolean>(false);
 
   constructor() {
     this.supabase = createClient(
@@ -83,19 +83,16 @@ export class SupabaseService {
 
 
   login(email: string, password: string): Observable<AuthResponse> {
-    return from(this.supabase.auth.signInWithPassword
-      ({
+    return from(this.supabase.auth.signInWithPassword({
         email: email,
         password: password
-      })
-    )
+      }));
   }
 
   logOut(): Observable<{ error: AuthError | null; }> {
     this.router.navigate(['/login']);
     localStorage.clear();
-    return from(this.supabase.auth.signOut())
-    
+    return from(this.supabase.auth.signOut());
   }
 }
 
