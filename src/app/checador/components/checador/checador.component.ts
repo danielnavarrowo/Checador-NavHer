@@ -25,7 +25,8 @@ import { DecimalPipe } from '@angular/common';
   styles: `
 
   .main {
-    background-image: radial-gradient(circle, #290026, #2f0025, #350023, #3b0021, #40001f, #460021, #4b0024, #510026, #59002e, #600037, #670041, #6d004c);
+    background: #000000;
+background: radial-gradient(circle, rgba(0, 0, 0, 1) 0%, rgba(135, 5, 31, 1) 100%);
   }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
