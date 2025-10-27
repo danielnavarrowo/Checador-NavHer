@@ -37,7 +37,7 @@ export class ChecadorComponent implements OnDestroy {
   private readonly productSignal = signal<Product | null>(null);
   public readonly product = computed(() => this.productSignal());
   public readonly showResult = signal(false);
-  private timeoutId: NodeJS.Timeout | undefined;
+  private timeoutId: ReturnType<typeof setTimeout> | undefined;
 
   public readonly myForm: FormGroup = this.fb.group({
     barcode: ['', Validators.required],
