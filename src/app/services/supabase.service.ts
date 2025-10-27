@@ -27,11 +27,11 @@ export class SupabaseService {
   fetchProducts(): Observable<Product[] | null> {
     return from(
       this.supabase.from('productos')
-        .select('codigo, descripcion, pcosto, pventa, mayoreo')
+        .select('codigo, descripcion, pcosto, pventa, mayoreo, iprioridad')
     ).pipe(
       map(({ data, error }) => {
         if (error) {
-          console.error('Error fetching product via RPC:', error);
+          console.error('Error fetching products: ', error);
           return null;
         }
         return data ? (data as Product[]) : null;

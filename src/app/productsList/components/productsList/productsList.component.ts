@@ -38,13 +38,19 @@ export class ProductsListComponent {
 
     const allProducts = this.supabaseService.productsSignal();
 
-    // Return all products if search term is empty
-    if (this.searchTerm().trim() === '') return allProducts;
+    // Filter products based on the search term
+    const filtered = this.searchTerm().trim() === ''
+      ? allProducts
+      : allProducts.filter(product =>
+          product.descripcion.toLowerCase().includes(this.searchTerm().toLowerCase())
+        );
 
-    // Return filtered products based on the search term
-    return allProducts.filter(product =>
-      product.descripcion.toLowerCase().includes(this.searchTerm().toLowerCase())
-    );
+    // Sort products: iprioridad = 1 first, then the rest
+    return filtered.slice().sort((a, b) => {
+      if (a.iprioridad === 1 && b.iprioridad !== 1) return -1;
+      if (a.iprioridad !== 1 && b.iprioridad === 1) return 1;
+      return 0;
+    });
   });
 
   // TrackBy function for better performance

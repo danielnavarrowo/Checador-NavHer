@@ -4,4 +4,5 @@ export interface Product {
     pcosto: number;
     pventa: number;
     mayoreo: number;
+    iprioridad: number;
 }
