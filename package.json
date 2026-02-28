@@ -33,7 +33,7 @@
     "@angular/compiler-cli": "^21.2.0",
     "@types/jasmine": "~5.1.12",
     "@vercel/node": "^5.5.0",
-    "angular-eslint": "20.5.0",
+    "angular-eslint": "21.2.0",
     "autoprefixer": "^10.4.21",
     "eslint": "^9.38.0",
     "jasmine-core": "~5.12.0",
