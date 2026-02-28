@@ -1,10 +1,6 @@
+import { AutoSizeVirtualScrollStrategy, RxVirtualScrollViewportComponent, RxVirtualFor } from "@rx-angular/template/virtual-scrolling";
 import { ChangeDetectionStrategy, Component, inject, signal, computed } from '@angular/core';
 import { SupabaseService } from '../../../services/supabase.service';
-import {
-  AutoSizeVirtualScrollStrategy, // ScrollStrategy
-  RxVirtualScrollViewportComponent, // Viewport
-  RxVirtualFor, // ViewRepeater
-} from '@rx-angular/template/experimental/virtual-scrolling';
 import { RouterLink } from '@angular/router';
 import { DatePipe, DecimalPipe } from '@angular/common';
 import { Product } from '../../../interfaces/product.interface';
