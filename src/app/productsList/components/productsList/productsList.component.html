@@ -2,21 +2,21 @@
 	<div [class]="'flex flex-col gap-4 text-gray-200 pb-4'">
 		<div [class]="'flex justify-between text-gray-200 text-center'">
 			<button [class]="'cursor-pointer bg-transparent border-none text-inherit'" routerLink="/checador">Ir a checador</button>
-			<h1 [class]="'text-4xl pretendard-bold'">Lista de productos</h1>
+			<h1 [class]="'text-4xl'">Lista de productos</h1>
 			<button [class]="'cursor-pointer bg-transparent border-none text-inherit'" (click)="logOut()" >Cerrar sesión</button>
 		</div>
-		<p [class]="'text-center text-sm pretendard-thin'">
+		<p [class]="'text-center text-sm'">
 			Ultima actualización:
 			{{lastUpdate | date: 'd MMM yyyy'}}</p>
 		<input type="text" (input)="searchTerm.set($any($event.target).value)" placeholder="Buscar productos..."
-			[class]="'w-full h-10 text-center border-2 border-gray-500 bg-transparent rounded-lg pretendard text-white'" />
+			[class]="'w-full h-10 text-center border-2 border-gray-500 bg-transparent rounded-lg text-white'" />
 	</div>
 
 	<!-- Virtual Scroll Viewport -->
 	<rx-virtual-scroll-viewport autosize>
 		<div *rxVirtualFor="let product of products(); trackBy: trackByProductId" [class]="'py-1 w-full'">
-			<div [class]="'flex flex-col glass md:flex-row rounded-2xl items-center w-full px-4 py-2 gap-2 pretendard'">
-				<div [class]="'text-xl bg-transparent md:bg-inherit pretendard-bold text-gray-100 text-balance w-full md:w-full rounded-lg text-center md:text-left py-[2px]'">
+			<div [class]="'flex flex-col glass md:flex-row rounded-2xl items-center w-full px-4 py-2 gap-2'">
+				<div [class]="'text-xl bg-transparent md:bg-inherit text-gray-100 text-balance w-full md:w-full rounded-lg text-center md:text-left py-[2px]'">
 					{{ product.descripcion }}
 				</div>
 				<div [class]="'flex flex-row justify-around w-full md:w-fit md:gap-3'">

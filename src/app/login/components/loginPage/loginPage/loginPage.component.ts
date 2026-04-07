@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, inject, signal } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, signal, computed } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SupabaseService } from '../../../../services/supabase.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -17,6 +17,9 @@ export class LoginPageComponent {
   private readonly supabase = inject(SupabaseService);
   private readonly router = inject(Router);
   private readonly activatedRoute = inject(ActivatedRoute);
+
+  public readonly wallpaperNumber = signal(Math.floor(Math.random() * 15) + 1);
+  public readonly wallpaperUrl = computed(() => `url('https://rabzabvoqwogqzonllnb.supabase.co/storage/v1/object/public/navher/wallpapers/wallpaper${this.wallpaperNumber()}.webp')`);
 
   public readonly loginForm: FormGroup = this.fb.group({
     email: ['', [Validators.required, Validators.email]],

@@ -1,48 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=Gloock&family=Google+Sans+Flex:opsz,slnt,wdth,wght,GRAD,ROND@6..144,-10..0,25..151,1..1000,0..100,0..100&display=swap")
+layer(base);
+
 @import 'tailwindcss';
 
 @config '../tailwind.config.js';
 
-/*
-  The default border color has changed to `currentColor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
 
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
+
+
+@layer utilities {
+  body {
+    font-family: "Google Sans Flex", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", serif;
+  }
+
+  .font-variable,
+  .font-variable::placeholder {
+    font-family: var(--font-sans);
+    font-variation-settings: "wght" var(--wght, 400),
+      "wdth" var(--wdth, 100), "GRAD" var(--grad, 0), "slnt" var(--slnt, 0),
+      "ROND" var(--rond, 0);
+  }
+
+  /* Map standard Tailwind font weights to the variable font weight axis */
+  .font-thin { --wght: 100; }
+  .font-extralight { --wght: 200; }
+  .font-light { --wght: 300; }
+  .font-normal { --wght: 400; }
+  .font-medium { --wght: 500; }
+  .font-semibold { --wght: 600; }
+  .font-bold { --wght: 700; }
+  .font-extrabold { --wght: 800; }
+  .font-black { --wght: 900; }
+}
+
+@theme {
+  --font-sans: "Google Sans Flex", sans-serif;
+}
+
 @layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type="number"] {
+    appearance: textfield;
   }
 }
 
-/* You can add global styles to this file, and also import other style files */
-
 body {
-    background: #210418;
+    background: #000000;
     -webkit-font-smoothing: antialiased;
-}
-
-.pretendard-thin {
-    font-family: "pretendard", sans-serif;
-    font-weight: 100;
-    font-style: normal;
-}
-
-.pretendard {
-    font-family: "pretendard", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-}
-
-.pretendard-bold {
-    font-family: "pretendard", sans-serif;
-    font-weight: 700;
-    font-style: normal;
 }
 
 .glass{

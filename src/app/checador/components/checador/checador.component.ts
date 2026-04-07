@@ -23,11 +23,6 @@ import { DecimalPipe } from '@angular/common';
   imports: [ReactiveFormsModule, DecimalPipe],
   templateUrl: './checador.component.html',
   styles: `
-
-  .main {
-    background: #000000;
-background: radial-gradient(circle, rgba(0, 0, 0, 1) 0%, rgba(135, 5, 31, 1) 100%);
-  }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -38,6 +33,9 @@ export class ChecadorComponent implements OnDestroy {
   public readonly product = computed(() => this.productSignal());
   public readonly showResult = signal(false);
   private timeoutId: ReturnType<typeof setTimeout> | undefined;
+
+  public readonly wallpaperNumber = signal(Math.floor(Math.random() * 15) + 1);
+  public readonly wallpaperUrl = computed(() => `url('https://rabzabvoqwogqzonllnb.supabase.co/storage/v1/object/public/navher/wallpapers/wallpaper${this.wallpaperNumber()}.webp')`);
 
   public readonly myForm: FormGroup = this.fb.group({
     barcode: ['', Validators.required],

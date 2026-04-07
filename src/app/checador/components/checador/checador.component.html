@@ -1,8 +1,8 @@
 <div [class]="'h-screen box-border p-6'">
-	<div [class]="'main flex flex-col box-border h-full rounded-2xl p-4 justify-center items-center'"
-		[class.gap-20]="!showResult()">
+	<div class ="main flex flex-col box-border h-full rounded-2xl p-4 justify-center items-center bg-cover bg-center bg-black/40 bg-blend-multiply"
+		[class.gap-20]="!showResult()" [style.backgroundImage]="wallpaperUrl()">
 		<div [class]="'flex flex-col gap-20 w-full px-12'">
-			<h1 [class]="'text-8xl pretendard-bold text-center text-white'">Checador de precios</h1>
+			<h1 [class]="'text-7xl font-variable [--wdth:130] [--wght:900] [--slnt:-2] text-center text-white'">Checador de precios</h1>
 			<form [formGroup]="myForm" (ngSubmit)="searchByBarcode()">
 				<input #barcodeInput type="text" formControlName="barcode" [class]="'w-full bg-white mix-blend-screen font-mono p-4 text-3xl text-center rounded-2xl font-semibold'"
 				[class.opacity-0]="showResult()"
@@ -12,14 +12,14 @@
 		</div>
 
 		@if (showResult()) {
-		<div [class]="'bg-white flex flex-col text-center text-pretty text-5xl pretendard rounded-2xl w-fit px-12 py-8 gap-6 mix-blend-screen'">
+		<div [class]="'glass flex flex-col text-center text-white text-pretty text-5xl w-fit px-12 py-8 gap-6'">
 			@if (product()) {
-			<h2>Nombre del producto:</h2>
-			<p [class]="'text-8xl pretendard-bold'">{{product()?.descripcion}}</p>
-			<h2>Precio:</h2>
-			<p [class]="'text-9xl pretendard-bold'">{{'$' + (product()?.pventa| number:'1.2-2')}}</p>
+			<h2 class="font-variable [--wdth:115] [--wght:200]">Nombre del producto:</h2>
+			<p [class]="'text-7xl font-variable [--wght:800] [--rond:30]'">{{product()?.descripcion}}</p>
+			<h2 class="font-variable [--wdth:115] [--wght:200]">Precio:</h2>
+			<p [class]="'text-8xl font-variable [--wght:800] [--rond:30]' ">{{'$' + (product()?.pventa| number:'1.2-2')}}</p>
 			} @else {
-			<h2 [class]="'text-8xl pretendard-bold text-center'">Producto no encontrado.</h2>
+			<h2 [class]="'text-7xl font-variable [--wdth:100] [--wght:700] text-center'">Producto no encontrado.</h2>
 			}
 		</div>
 		}
