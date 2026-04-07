@@ -5,6 +5,7 @@ import {
   computed,
   ChangeDetectionStrategy,
   OnDestroy,
+  OnInit,
 } from '@angular/core';
 import {
   FormBuilder,
@@ -26,13 +27,17 @@ import { DecimalPipe } from '@angular/common';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ChecadorComponent implements OnDestroy {
+export class ChecadorComponent implements OnInit, OnDestroy {
   private readonly fb = inject(FormBuilder);
   public readonly supabaseService = inject(SupabaseService);
   private readonly productSignal = signal<Product | null>(null);
   public readonly product = computed(() => this.productSignal());
   public readonly showResult = signal(false);
   private timeoutId: ReturnType<typeof setTimeout> | undefined;
+  private timeIntervalId: ReturnType<typeof setInterval> | undefined;
+
+  public readonly currentDate = signal<string>('');
+  public readonly currentTime = signal<string>('');
 
   public readonly wallpaperNumber = signal(Math.floor(Math.random() * 15) + 1);
   public readonly wallpaperUrl = computed(() => `url('https://rabzabvoqwogqzonllnb.supabase.co/storage/v1/object/public/navher/wallpapers/wallpaper${this.wallpaperNumber()}.webp')`);
@@ -74,7 +79,22 @@ export class ChecadorComponent implements OnDestroy {
     }, 10000);
   }
 
+  ngOnInit(): void {
+    this.updateDateTime();
+    this.timeIntervalId = setInterval(() => this.updateDateTime(), 1000);
+  }
+
+  private updateDateTime(): void {
+    const now = new Date();
+    const dateStr = now.toLocaleDateString('es-MX', { weekday: 'long', day: 'numeric', month: 'long' });
+    this.currentDate.set(dateStr.charAt(0).toUpperCase() + dateStr.slice(1));
+    
+    const timeStr = now.toLocaleTimeString('es-MX', { hour: 'numeric', minute: '2-digit', hour12: true });
+    this.currentTime.set(timeStr);
+  }
+
   ngOnDestroy(): void {
     if (this.timeoutId) clearTimeout(this.timeoutId);
+    if (this.timeIntervalId) clearInterval(this.timeIntervalId);
   }
 }
