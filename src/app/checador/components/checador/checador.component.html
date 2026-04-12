@@ -4,10 +4,10 @@
 		
 		<!-- Date and Time Header -->
 		@if (!showResult()) {
-		<div class="glass absolute bottom-4 left-4 text-white font-variable [--wght:300] [--wdth:110] [--slnt:-2] px-4 py-2 rounded-xl drop-shadow-md">
+		<div class="glass absolute bottom-4 left-4 text-white text-lg font-variable [--wght:300] [--wdth:110] [--slnt:-2] px-4 py-2 rounded-xl drop-shadow-md">
 			{{ currentDate() }}
 		</div>
-		<div class="glass absolute bottom-4 right-4 text-white font-variable [--wght:300] [--wdth:110] [--slnt:-2] px-4 py-2 rounded-xl drop-shadow-md">
+		<div class="glass absolute bottom-4 right-4 text-white text-lg font-variable [--wght:300] [--wdth:110] [--slnt:-2] px-4 py-2 rounded-xl drop-shadow-md">
 			{{ currentTime() }}
 		</div>
 		}
@@ -26,9 +26,9 @@
 		<div [class]="'glass flex flex-col text-center text-white text-pretty text-3xl w-fit px-12 py-8 gap-6'">
 			@if (product()) {
 			<h2 class="font-variable [--wdth:115] [--wght:200]">Nombre del producto:</h2>
-			<p [class]="'text-6xl font-variable [--wght:800] [--rond:30]'">{{product()?.descripcion}}</p>
+			<p [class]="'text-7xl font-variable [--wght:800] [--rond:30]'">{{product()?.descripcion}}</p>
 			<h2 class="font-variable [--wdth:115] [--wght:200]">Precio:</h2>
-			<p [class]="'text-7xl font-variable [--wght:800] [--rond:30]' ">{{'$' + (product()?.pventa| number:'1.2-2')}}</p>
+			<p [class]="'text-8xl font-variable [--wght:800] [--rond:30]' ">{{'$' + (product()?.pventa| number:'1.2-2')}}</p>
 			} @else {
 			<h2 [class]="'text-6xl font-variable [--wdth:100] [--wght:700] text-center'">Producto no encontrado.</h2>
 			}
