@@ -13,13 +13,13 @@
 	</div>
 
 	<!-- Virtual Scroll Viewport -->
-	<rx-virtual-scroll-viewport autosize>
-		<div *rxVirtualFor="let product of products(); trackBy: trackByProductId" [class]="'py-1 w-full'">
-			<div [class]="'flex flex-col glass md:flex-row rounded-2xl items-center w-full px-4 py-2 gap-2'">
-				<div [class]="'text-xl bg-transparent md:bg-inherit text-gray-100 text-balance w-full md:w-full rounded-lg text-center md:text-left py-[2px]'">
+	<cdk-virtual-scroll-viewport [itemSize]="itemSize()" minBufferPx="300" maxBufferPx="600" class="flex-1 w-full min-h-0">
+		<div *cdkVirtualFor="let product of products(); trackBy: trackByProductId" [class]="'h-34 md:h-20 py-1 w-full box-border'">
+			<div [class]="'flex flex-col glass md:flex-row rounded-2xl items-center justify-between w-full h-full px-4 py-2 gap-2 box-border'">
+				<div [class]="'text-xl bg-transparent md:bg-inherit text-gray-100 text-balance w-full rounded-lg text-center md:text-left py-0.5 line-clamp-2'">
 					{{ product.descripcion }}
 				</div>
-				<div [class]="'flex flex-row justify-around w-full md:w-fit md:gap-3'">
+				<div [class]="'flex flex-row justify-around w-full md:w-fit md:gap-3 shrink-0'">
 					<div [class]="'text-center flex-col'">
 						<span [class]="'text-sm text-gray-300'">Costo:</span>
 						<div [class]="'text-xl font-semibold text-gray-100'">
@@ -41,7 +41,7 @@
 				</div>
 			</div>
 		</div>
-	</rx-virtual-scroll-viewport>
+	</cdk-virtual-scroll-viewport>
 
 	@if (products().length === 0) {
 		<p [class]="'text-center text-gray-300 mt-4'">No se encontraron productos.</p>

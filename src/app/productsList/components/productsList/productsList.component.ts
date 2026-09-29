@@ -1,28 +1,39 @@
-import { AutoSizeVirtualScrollStrategy, RxVirtualScrollViewportComponent, RxVirtualFor } from "@rx-angular/template/virtual-scrolling";
-import { ChangeDetectionStrategy, Component, inject, signal, computed } from '@angular/core';
+import { Component, inject, signal, computed } from '@angular/core';
+import { CdkVirtualScrollViewport, CdkFixedSizeVirtualScroll, CdkVirtualForOf } from '@angular/cdk/scrolling';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { map } from 'rxjs';
 import { SupabaseService } from '../../../services/supabase.service';
 import { RouterLink } from '@angular/router';
 import { DatePipe, DecimalPipe } from '@angular/common';
 import { Product } from '../../../interfaces/product.interface';
 
-
-
-//Products list component. It shows a list of products and allows to search them by their description.
-
+// Products list component. It shows a list of products and allows to search them by their description.
 
 @Component({
   selector: 'app-products-list',
   imports: [
-    DatePipe, DecimalPipe,
-    RxVirtualFor, RxVirtualScrollViewportComponent, AutoSizeVirtualScrollStrategy, RouterLink
+    DatePipe,
+    DecimalPipe,
+    CdkVirtualScrollViewport,
+    CdkFixedSizeVirtualScroll,
+    CdkVirtualForOf,
+    RouterLink
   ],
-  templateUrl: './productsList.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  templateUrl: './productsList.component.html'
 })
 
 export class ProductsListComponent {
 
   private readonly supabaseService = inject(SupabaseService);
+  private readonly breakpointObserver = inject(BreakpointObserver);
+
+  private readonly isDesktop = toSignal(
+    this.breakpointObserver.observe('(min-width: 768px)').pipe(map(result => result.matches)),
+    { initialValue: typeof window !== 'undefined' ? window.innerWidth >= 768 : true }
+  );
+
+  readonly itemSize = computed(() => (this.isDesktop() ? 80 : 136));
 
   // Use a signal for the search term to trigger reactivity
   public readonly searchTerm = signal('');
