@@ -20,7 +20,7 @@ import { Product } from '../../../interfaces/product.interface';
     CdkVirtualForOf,
     RouterLink
   ],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './productsList.component.html'
 })
 
