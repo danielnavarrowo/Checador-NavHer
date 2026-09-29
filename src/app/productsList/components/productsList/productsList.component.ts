@@ -1,4 +1,4 @@
-import { Component, inject, signal, computed } from '@angular/core';
+import { Component, inject, signal, computed, ChangeDetectionStrategy } from '@angular/core';
 import { CdkVirtualScrollViewport, CdkFixedSizeVirtualScroll, CdkVirtualForOf } from '@angular/cdk/scrolling';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -20,6 +20,7 @@ import { Product } from '../../../interfaces/product.interface';
     CdkVirtualForOf,
     RouterLink
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './productsList.component.html'
 })
 

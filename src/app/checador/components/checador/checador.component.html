@@ -28,7 +28,7 @@
 			<h2 class="font-variable [--wdth:115] [--wght:200]">Nombre del producto:</h2>
 			<p [class]="'text-7xl font-variable [--wght:800] [--rond:30]'">{{product()?.descripcion}}</p>
 			<h2 class="font-variable [--wdth:115] [--wght:200]">Precio:</h2>
-			<p [class]="'text-8xl font-variable [--wght:800] [--rond:30]' ">{{'$' + (product()?.pventa| number:'1.2-2')}}</p>
+			<p [class]="'text-8xl font-variable [--wght:800] [--rond:30]' ">{{'$' + ($safeNavigationMigration(product()?.pventa)| number:'1.2-2')}}</p>
 			} @else {
 			<h2 [class]="'text-6xl font-variable [--wdth:100] [--wght:700] text-center'">Producto no encontrado.</h2>
 			}
